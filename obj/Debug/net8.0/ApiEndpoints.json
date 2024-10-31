@@ -1,0 +1,245 @@
+[
+  {
+    "ContainingType": "HealMeAppBackend.API.Doctors.Interfaces.REST.DoctorsController",
+    "Method": "CreateDoctor",
+    "RelativePath": "api/v1/doctors",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resource",
+        "Type": "HealMeAppBackend.API.Doctors.Interfaces.REST.Resources.CreateDoctorResource",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Doctors.Interfaces.REST.Resources.DoctorResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      }
+    ],
+    "Tags": [
+      "Doctors"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Doctors.Interfaces.REST.DoctorsController",
+    "Method": "GetDoctorByName",
+    "RelativePath": "api/v1/doctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Doctors.Interfaces.REST.Resources.DoctorResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Doctors"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Doctors.Interfaces.REST.DoctorsController",
+    "Method": "GetDoctorById",
+    "RelativePath": "api/v1/doctors/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Doctors.Interfaces.REST.Resources.DoctorResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Doctors"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Hospitals.Interfaces.REST.HospitalsController",
+    "Method": "CreateHospital",
+    "RelativePath": "api/v1/hospitals",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resource",
+        "Type": "HealMeAppBackend.API.Hospitals.Interfaces.REST.Resources.CreateHospitalResource",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Hospitals.Interfaces.REST.Resources.HospitalResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      }
+    ],
+    "Tags": [
+      "Hospitals"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Hospitals.Interfaces.REST.HospitalsController",
+    "Method": "GetHospitalByName",
+    "RelativePath": "api/v1/hospitals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Hospitals.Interfaces.REST.Resources.HospitalResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Hospitals"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Hospitals.Interfaces.REST.HospitalsController",
+    "Method": "GetHospitalById",
+    "RelativePath": "api/v1/hospitals/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Hospitals.Interfaces.REST.Resources.HospitalResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Hospitals"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Products.Interfaces.REST.ProductsController",
+    "Method": "CreateProduct",
+    "RelativePath": "api/v1/products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resource",
+        "Type": "HealMeAppBackend.API.Products.Interfaces.REST.Resources.CreateProductResource",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Products.Interfaces.REST.Resources.ProductResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      }
+    ],
+    "Tags": [
+      "Products"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Products.Interfaces.REST.ProductsController",
+    "Method": "GetProductByName",
+    "RelativePath": "api/v1/products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Products.Interfaces.REST.Resources.ProductResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Products"
+    ]
+  },
+  {
+    "ContainingType": "HealMeAppBackend.API.Products.Interfaces.REST.ProductsController",
+    "Method": "GetProductById",
+    "RelativePath": "api/v1/products/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HealMeAppBackend.API.Products.Interfaces.REST.Resources.ProductResource",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Products"
+    ]
+  }
+]

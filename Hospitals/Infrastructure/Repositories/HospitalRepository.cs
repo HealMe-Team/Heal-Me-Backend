@@ -6,6 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealMeAppBackend.API.Hospitals.Infrastructure.Repositories
 {
+    /// <summary>
+    ///     Repository for managing hospital data in the database.
+    /// </summary>
+    /// <remarks>
+    ///     This class implements methods to interact with the hospital data source, 
+    ///     including retrieving hospitals by name, ID, and rating.
+    /// </remarks>
     public class HospitalRepository(AppDbContext context) : BaseRepository<Hospital>(context), IHospitalRepository
     {
         /// <inheritdoc />

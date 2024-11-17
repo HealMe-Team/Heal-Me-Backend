@@ -11,7 +11,7 @@ namespace HealMeAppBackend.API.Authentication.Interfaces.REST
         private readonly ITokenService _tokenService;
         private readonly IHashingService _hashingService;
 
-        // Simulación de una base de datos en memoria para el ejemplo
+        //Simulation of an in-memory database for example
         private static readonly Dictionary<string, string> Users = new();
 
         public AuthenticationController(ITokenService tokenService, IHashingService hashingService)
@@ -21,10 +21,10 @@ namespace HealMeAppBackend.API.Authentication.Interfaces.REST
         }
 
         /// <summary>
-        /// Endpoint para registrar un nuevo usuario.
+        /// Endpoint to register a new user.
         /// </summary>
-        /// <param name="resource">Datos del usuario para el registro.</param>
-        /// <returns>Respuesta indicando éxito o error.</returns>
+        /// <param name="resource">User data for registration.</param>
+        /// <returns>Response indicating success or error.</returns>
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterResource resource)
         {
@@ -38,10 +38,10 @@ namespace HealMeAppBackend.API.Authentication.Interfaces.REST
         }
 
         /// <summary>
-        /// Endpoint para iniciar sesión.
+        ///  Endpoint to log in.
         /// </summary>
-        /// <param name="resource">Credenciales del usuario.</param>
-        /// <returns>Token JWT si las credenciales son correctas.</returns>
+        /// <param name="resource">User credentials.</param>
+        /// <returns>JWT token if the credentials are correct.</returns>
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginResource resource)
         {

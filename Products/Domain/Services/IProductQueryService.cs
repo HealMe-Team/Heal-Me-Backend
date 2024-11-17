@@ -30,5 +30,8 @@ namespace HealMeAppBackend.API.Products.Domain.Services
         /// <param name="query">The GetProductByNameQuery</param>
         /// <returns>The Product object if found, or null otherwise</returns>
         Task<Product?> Handle(GetProductByNameQuery query);
+
+        Task<IEnumerable<Product>> Handle(GetProductByRatingQuery query);
+
     }
 }

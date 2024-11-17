@@ -19,5 +19,13 @@ namespace HealMeAppBackend.API.Products.Infrastructure.Repositories
         {
             return await context.Set<Product>().FirstOrDefaultAsync(p => p.Id == id);
         }
+
+        public async Task<IEnumerable<Product>> FindByRatingAsync(int rating)
+        {
+            return await context.Set<Product>()
+                .Where(d => d.Rating == rating)
+                .ToListAsync();
+        }
+
     }
 }

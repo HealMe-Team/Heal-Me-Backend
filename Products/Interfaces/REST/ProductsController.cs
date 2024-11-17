@@ -1,8 +1,10 @@
 ﻿using System.Net.Mime;
+using HealMeAppBackend.API.Products.Application.Internal;
 using HealMeAppBackend.API.Products.Domain.Model.Queries;
 using HealMeAppBackend.API.Products.Domain.Services;
 using HealMeAppBackend.API.Products.Interfaces.REST.Resources;
 using HealMeAppBackend.API.Products.Interfaces.REST.Transform;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -17,6 +19,7 @@ public class ProductsController(
     IProductQueryService productQueryService) : ControllerBase
 {
     [HttpPost]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Create a product",
         Description = "Create a product with a given name, description, price, and rating",
@@ -34,6 +37,7 @@ public class ProductsController(
     }
 
     [HttpGet]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Gets a product by name",
         Description = "Gets a product for a given name",
@@ -50,6 +54,7 @@ public class ProductsController(
     }
 
     [HttpGet("{id}")]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Gets a product by id",
         Description = "Gets a product for a given product identifier",
@@ -64,4 +69,25 @@ public class ProductsController(
         var resource = ProductResourceFromEntityAssembler.ToResourceFromEntity(result);
         return Ok(resource);
     }
+
+    [HttpGet("rating/{rating}")]
+    [Authorize]
+    [SwaggerOperation(
+    Summary = "Gets Product by rating",
+    Description = "Gets all Product with the specified rating",
+    OperationId = "GetProductsByRating"
+)]
+    [SwaggerResponse(200, "Products were found", typeof(IEnumerable<ProductResource>))]
+    public async Task<ActionResult> GetProductsByRating(int rating)
+    {
+        var getProductByRatingQuery = new GetProductByRatingQuery(rating);
+        var results = await productQueryService.Handle(getProductByRatingQuery);
+
+        if (results == null || !results.Any())
+            return NotFound();
+
+        var resources = results.Select(ProductResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(resources);
+    }
+
 }

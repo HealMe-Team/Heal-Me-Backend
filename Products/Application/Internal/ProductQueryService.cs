@@ -2,6 +2,7 @@
 using HealMeAppBackend.API.Products.Domain.Model.Queries;
 using HealMeAppBackend.API.Products.Domain.Repositories;
 using HealMeAppBackend.API.Products.Domain.Services;
+using HealMeAppBackend.API.Products.Infrastructure.Repositories;
 using HealMeAppBackend.API.Shared.Domain.Repositories;
 
 namespace HealMeAppBackend.API.Products.Application.Internal
@@ -26,5 +27,11 @@ namespace HealMeAppBackend.API.Products.Application.Internal
         {
             return await productRepository.FindByNameAsync(query.Name);
         }
+
+        public async Task<IEnumerable<Product>> Handle(GetProductByRatingQuery query)
+        {
+            return await productRepository.FindByRatingAsync(query.Rating);
+        }
+
     }
 }

@@ -25,5 +25,8 @@ namespace HealMeAppBackend.API.Products.Domain.Repositories
         ///     The product object if found, null otherwise.
         /// </returns>
         Task<Product?> FindByNameAsync(string name);
+
+        Task<IEnumerable<Product>> FindByRatingAsync(int rating);
+
     }
 }

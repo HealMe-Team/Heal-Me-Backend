@@ -3,6 +3,10 @@ using Humanizer;
 
 namespace HealMeAppBackend.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions
 {
+     /// <summary>
+    ///     Provides extension methods for string manipulation, such as converting
+    ///     to snake_case and pluralizing strings.
+    /// </summary>
     public static class StringExtensions
     {
         public static string ToSnakeCase(this string text)

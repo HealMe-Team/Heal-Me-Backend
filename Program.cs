@@ -31,7 +31,7 @@ using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
-// Agregar la configuración
+// add configuration
 var configuration = builder.Configuration;
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
@@ -47,7 +47,7 @@ builder.Services.AddAuthentication("Bearer")
             ValidateAudience = false,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenSettings:Secret"])),
-            ClockSkew = TimeSpan.Zero // Para validación precisa de expiración
+            ClockSkew = TimeSpan.Zero // Para validaciÃ³n precisa de expiraciÃ³n
         };
     });
 

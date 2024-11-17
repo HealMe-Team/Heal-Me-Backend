@@ -3,6 +3,7 @@ using HealMeAppBackend.API.Doctors.Domain.Model.Queries;
 using HealMeAppBackend.API.Doctors.Domain.Services;
 using HealMeAppBackend.API.Doctors.Interfaces.REST.Resources;
 using HealMeAppBackend.API.Doctors.Interfaces.REST.Transform;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using Swashbuckle.AspNetCore.Annotations;
@@ -18,6 +19,7 @@ public class DoctorsController(
     IDoctorQueryService doctorQueryService) : ControllerBase
 {
     [HttpPost]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Create a doctor",
         Description = "Create a doctor with a given name, description, and rating",
@@ -35,6 +37,7 @@ public class DoctorsController(
     }
 
     [HttpGet]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Gets a doctor according to parameters",
         Description = "Gets a doctor for a given name",
@@ -51,6 +54,7 @@ public class DoctorsController(
     }
 
     [HttpGet("{id}")]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Gets a doctor by id",
         Description = "Gets a doctor for a given doctor identifier",
@@ -65,4 +69,25 @@ public class DoctorsController(
         var resource = DoctorResourceFromEntityAssembler.ToResourceFromEntity(result);
         return Ok(resource);
     }
+
+    [HttpGet("rating/{rating}")]
+    [Authorize]
+    [SwaggerOperation(
+    Summary = "Gets doctors by rating",
+    Description = "Gets all doctors with the specified rating",
+    OperationId = "GetDoctorsByRating"
+)]
+    [SwaggerResponse(200, "Doctors were found", typeof(IEnumerable<DoctorResource>))]
+    public async Task<ActionResult> GetDoctorsByRating(int rating)
+    {
+        var getDoctorByRatingQuery = new GetDoctorByRatingQuery(rating);
+        var results = await doctorQueryService.Handle(getDoctorByRatingQuery);
+
+        if (results == null || !results.Any())
+            return NotFound();
+
+        var resources = results.Select(DoctorResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(resources);
+    }
+
 }

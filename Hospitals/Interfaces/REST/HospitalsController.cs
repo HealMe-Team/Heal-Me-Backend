@@ -1,8 +1,10 @@
 ﻿using System.Net.Mime;
+using HealMeAppBackend.API.Hospitals.Application.Internal;
 using HealMeAppBackend.API.Hospitals.Domain.Model.Queries;
 using HealMeAppBackend.API.Hospitals.Domain.Services;
 using HealMeAppBackend.API.Hospitals.Interfaces.REST.Resources;
 using HealMeAppBackend.API.Hospitals.Interfaces.REST.Transform;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -17,6 +19,7 @@ public class HospitalsController(
     IHospitalQueryService hospitalQueryService) : ControllerBase
 {
     [HttpPost]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Create a hospital",
         Description = "Create a hospital with a given name, description, location, and rating",
@@ -34,6 +37,7 @@ public class HospitalsController(
     }
 
     [HttpGet]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Gets a hospital according to parameters",
         Description = "Gets a hospital for a given name",
@@ -50,6 +54,7 @@ public class HospitalsController(
     }
 
     [HttpGet("{id}")]
+    [Authorize]
     [SwaggerOperation(
         Summary = "Gets a hospital by id",
         Description = "Gets a hospital for a given hospital identifier",
@@ -64,4 +69,25 @@ public class HospitalsController(
         var resource = HospitalResourceFromEntityAssembler.ToResourceFromEntity(result);
         return Ok(resource);
     }
+
+    [HttpGet("rating/{rating}")]
+    [Authorize]
+    [SwaggerOperation(
+    Summary = "Gets hospital by rating",
+    Description = "Gets all hospital with the specified rating",
+    OperationId = "GetHospitalByRating"
+)]
+    [SwaggerResponse(200, "Hospitals were found", typeof(IEnumerable<HospitalResource>))]
+    public async Task<ActionResult> GetHospitalsByRating(int rating)
+    {
+        var getHospitalByRatingQuery = new GetHospitalByRatingQuery(rating);
+        var results = await hospitalQueryService.Handle(getHospitalByRatingQuery);
+
+        if (results == null || !results.Any())
+            return NotFound();
+
+        var resources = results.Select(HospitalResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(resources);
+    }
+
 }

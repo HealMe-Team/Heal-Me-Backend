@@ -30,5 +30,8 @@ namespace HealMeAppBackend.API.Doctors.Domain.Services
         /// <param name="query">The GetDoctorByNameQuery</param>
         /// <returns>The Doctor object if found, or null otherwise</returns>
         Task<Doctor?> Handle(GetDoctorByNameQuery query);
+
+        Task<IEnumerable<Doctor>> Handle(GetDoctorByRatingQuery query);
+
     }
 }

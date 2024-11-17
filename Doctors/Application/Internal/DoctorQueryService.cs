@@ -26,5 +26,11 @@ namespace HealMeAppBackend.API.Doctors.Application.Internal
         {
             return await doctorRepository.FindByNameAsync(query.Name);
         }
+
+        public async Task<IEnumerable<Doctor>> Handle(GetDoctorByRatingQuery query)
+        {
+            return await doctorRepository.FindByRatingAsync(query.Rating);
+        }
+
     }
 }

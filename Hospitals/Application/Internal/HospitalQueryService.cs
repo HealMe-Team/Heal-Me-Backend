@@ -2,6 +2,7 @@
 using HealMeAppBackend.API.Hospitals.Domain.Model.Queries;
 using HealMeAppBackend.API.Hospitals.Domain.Repositories;
 using HealMeAppBackend.API.Hospitals.Domain.Services;
+using HealMeAppBackend.API.Hospitals.Infrastructure.Repositories;
 using HealMeAppBackend.API.Shared.Domain.Repositories;
 
 namespace HealMeAppBackend.API.Hospitals.Application.Internal
@@ -26,5 +27,11 @@ namespace HealMeAppBackend.API.Hospitals.Application.Internal
         {
             return await hospitalRepository.FindByNameAsync(query.Name);
         }
+
+        public async Task<IEnumerable<Hospital>> Handle(GetHospitalByRatingQuery query)
+        {
+            return await hospitalRepository.FindByRatingAsync(query.Rating);
+        }
+
     }
 }

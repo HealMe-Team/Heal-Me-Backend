@@ -27,5 +27,8 @@ namespace HealMeAppBackend.API.Doctors.Domain.Repositories
         /// </returns>
         Task<Doctor?> FindByNameAsync(string name);
 
+        Task<IEnumerable<Doctor>> FindByRatingAsync(int rating);
+
+
     }
 }

@@ -25,5 +25,8 @@ namespace HealMeAppBackend.API.Hospitals.Domain.Repositories
         ///     The hospital object if found, null otherwise.
         /// </returns>
         Task<Hospital?> FindByNameAsync(string name);
+
+        Task<IEnumerable<Hospital>> FindByRatingAsync(int rating);
+
     }
 }

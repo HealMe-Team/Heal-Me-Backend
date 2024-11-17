@@ -2,10 +2,13 @@
 
 namespace HealMeAppBackend.API.Doctors.Domain.Model.Aggregates
 {
-    /// Doctor Aggregate
     /// <summary>
-    ///     This class represents the Doctor aggregate. It is used to store the details of a doctor.
+    ///     Doctor aggregate.
     /// </summary>
+    /// <remarks>
+    ///     This class represents the Doctor aggregate. It is used to store the details of a doctor,
+    ///     including name, description, and rating.
+    /// </remarks>
     public class Doctor
     {
         public int Id { get; private set; }

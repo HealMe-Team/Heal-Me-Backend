@@ -4,6 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealMeAppBackend.API.Shared.Infrastructure.Persistence.EFC.Repositories
 {
+    /// <summary>
+    ///     Provides a generic base implementation for repository operations.
+    /// </summary>
+    /// <typeparam name="TEntity">
+    ///     The type of entity the repository will handle.
+    /// </typeparam>
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
 

@@ -18,6 +18,12 @@ public class DoctorsController(
     IDoctorCommandService doctorCommandService,
     IDoctorQueryService doctorQueryService) : ControllerBase
 {
+    /// <summary>
+    ///     Creates a new doctor.
+    /// </summary>
+    /// <param name="resource">The resource containing the doctor's details.</param>
+    /// <returns>A response with the created doctor's details.</returns>
+    
     [HttpPost]
     [Authorize]
     [SwaggerOperation(
@@ -36,6 +42,12 @@ public class DoctorsController(
         return CreatedAtAction(nameof(GetDoctorById), new { id = result.Id }, DoctorResourceFromEntityAssembler.ToResourceFromEntity(result));
     }
 
+    /// <summary>
+    ///     Gets a doctor by name.
+    /// </summary>
+    /// <param name="name">The doctor's name.</param>
+    /// <returns>The doctor's details.</returns>
+    
     [HttpGet]
     [Authorize]
     [SwaggerOperation(
@@ -53,6 +65,11 @@ public class DoctorsController(
         return Ok(resource);
     }
 
+    /// <summary>
+    /// Gets a doctor by ID.
+    /// </summary>
+    /// <param name="id">The doctor's ID.</param>
+    /// <returns>The doctor's details.</returns>
     [HttpGet("{id}")]
     [Authorize]
     [SwaggerOperation(
@@ -70,6 +87,12 @@ public class DoctorsController(
         return Ok(resource);
     }
 
+     /// <summary>
+    ///     Gets doctors by rating.
+    /// </summary>
+    /// <param name="rating">The doctors' rating.</param>
+    /// <returns>A list of doctors with the specified rating.</returns>
+    
     [HttpGet("rating/{rating}")]
     [Authorize]
     [SwaggerOperation(

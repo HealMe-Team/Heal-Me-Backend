@@ -7,6 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealMeAppBackend.API.Shared.Infrastructure.Persistence.EFC.Configuration
 {
+     /// <summary>
+    ///     Provides extension methods for string manipulation, such as converting
+    ///     to snake_case and pluralizing strings.
+    /// </summary>
     public class AppDbContext(DbContextOptions options) : DbContext(options)
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

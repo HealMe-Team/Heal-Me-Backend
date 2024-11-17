@@ -9,15 +9,32 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace HealMeAppBackend.API.Hospitals.Interfaces.REST;
-
+    /// <summary>
+    ///     Controller for managing hospital-related operations.
+    /// </summary>
+    /// <remarks>
+    ///     Provides endpoints for creating hospitals, retrieving hospitals by various criteria, 
+    ///     and managing their data in a RESTful manner.
+    /// </remarks>
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
 [Tags("Hospitals")]
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="HospitalsController"/> class.
+        /// </summary>
+        /// <param name="hospitalCommandService">Service for handling hospital commands.</param>
+        /// <param name="hospitalQueryService">Service for handling hospital queries.</param>
 public class HospitalsController(
     IHospitalCommandService hospitalCommandService,
     IHospitalQueryService hospitalQueryService) : ControllerBase
 {
+     /// <summary>
+    ///     Creates a new hospital.
+    /// </summary>
+    /// <param name="resource">The hospital details for creation.</param>
+    /// <returns>The created hospital as a resource.</returns>
     [HttpPost]
     [Authorize]
     [SwaggerOperation(
@@ -36,6 +53,11 @@ public class HospitalsController(
         return CreatedAtAction(nameof(GetHospitalById), new { id = result.Id }, HospitalResourceFromEntityAssembler.ToResourceFromEntity(result));
     }
 
+    /// <summary>
+    ///     Retrieves a hospital by its name.
+    /// </summary>
+    /// <param name="name">The name of the hospital to retrieve.</param>
+    /// <returns>The hospital resource if found.</returns>
     [HttpGet]
     [Authorize]
     [SwaggerOperation(
@@ -53,6 +75,11 @@ public class HospitalsController(
         return Ok(resource);
     }
 
+     /// <summary>
+    ///     Retrieves a hospital by its ID.
+    /// </summary>
+    /// <param name="id">The ID of the hospital to retrieve.</param>
+    /// <returns>The hospital resource if found.</returns>
     [HttpGet("{id}")]
     [Authorize]
     [SwaggerOperation(
@@ -69,7 +96,12 @@ public class HospitalsController(
         var resource = HospitalResourceFromEntityAssembler.ToResourceFromEntity(result);
         return Ok(resource);
     }
-
+    
+    /// <summary>
+    ///     Retrieves hospitals by their rating.
+    /// </summary>
+    /// <param name="rating">The rating to filter hospitals by.</param>
+    /// <returns>A list of hospitals with the specified rating.</returns>
     [HttpGet("rating/{rating}")]
     [Authorize]
     [SwaggerOperation(

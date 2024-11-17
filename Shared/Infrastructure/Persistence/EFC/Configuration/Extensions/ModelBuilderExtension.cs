@@ -2,6 +2,13 @@
 
 namespace HealMeAppBackend.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions
 {
+    /// <summary>
+    ///     Provides extension methods for configuring Entity Framework Core models.
+    /// </summary>
+    /// <remarks>
+    ///     This class contains custom extensions to simplify the configuration of EF Core entities, 
+    ///     such as applying a naming convention to database table, column, and constraint names.
+    /// </remarks>
     public static class ModelBuilderExtension
     {
         public static void UseSnakeCaseNamingConvention(this ModelBuilder builder)

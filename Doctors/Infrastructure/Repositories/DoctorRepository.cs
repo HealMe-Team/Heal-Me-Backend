@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealMeAppBackend.API.Doctors.Infrastructure.Repositories
 {
+    /// <summary>
+    ///     Repository implementation for managing <see cref="Doctor"/> entities.
+    /// </summary>
     public class DoctorRepository(AppDbContext context) : BaseRepository<Doctor>(context), IDoctorRepository
     {
         /// <inheritdoc />

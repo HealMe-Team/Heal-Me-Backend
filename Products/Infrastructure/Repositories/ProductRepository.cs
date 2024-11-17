@@ -6,6 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealMeAppBackend.API.Products.Infrastructure.Repositories
 {
+     /// <summary>
+    ///     Repository implementation for managing products in the database.
+    /// </summary>
+    /// <remarks>
+    ///     Provides methods to query and manage product data, including finding products
+    ///     by name, ID, and rating.
+    /// </remarks>
     public class ProductRepository(AppDbContext context) : BaseRepository<Product>(context), IProductRepository
     {
         /// <inheritdoc />
